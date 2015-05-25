@@ -14,13 +14,11 @@ if( empty( $_SESSION ) || false === array_key_exists('logged_in', $_SESSION) ) {
         // User tried to login and fucking failed
         $_SESSION['message'] = 'Incorrect user credentials'; 
         header('Location: ./index.php');
-    }
-    else
-    {
-        $_SESSION['logged_in'] = true;
-        unset( $_SERVER['message'] );
+        return;
     }
 }
 
+unset( $_SESSION['message'] );
+$_SESSION['logged_in'] = true;
 header('Location: ./pages/index.php')
 ?>
